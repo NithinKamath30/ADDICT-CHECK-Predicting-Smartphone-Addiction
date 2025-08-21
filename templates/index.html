@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Smartphone Addiction Predictor</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+        }
+
+        .form-container {
+            text-align: center;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input[type="number"] {
+            margin-bottom: 10px;
+        }
+
+        h2, h3 {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Enter Your Smartphone Usage Data</h2>
+        <form action="/predict" method="POST">
+            <label>App Usage Time (min/day):</label><br>
+            <input type="number" name="app_usage" step="1" required><br>
+
+            <label>Screen On Time (hrs/day):</label><br>
+            <input type="number" name="screen_time" step="0.1" required><br>
+
+            <label>Battery Drain (mAh/day):</label><br>
+            <input type="number" name="battery_drain" step="1" required><br>
+
+            <label>Number of Apps Installed:</label><br>
+            <input type="number" name="apps_installed" required><br>
+
+            <label>Data Usage (MB/day):</label><br>
+            <input type="number" name="data_usage" step="1" required><br>
+
+            <label>Age:</label><br>
+            <input type="number" name="age" step="1" required><br><br>
+
+            <input type="submit" value="Predict">
+        </form>
+
+        {% if prediction %}
+            <h3>Prediction: {{ prediction }}</h3>
+        {% endif %}
+    </div>
+</body>
+</html>
